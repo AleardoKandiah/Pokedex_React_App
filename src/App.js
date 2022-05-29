@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
   
@@ -7,7 +7,24 @@ function App() {
   
   const getAllPokemons = async () => {
     const res = await fetch(LoadMore)
+    const data = await res.json()
+
+    setLoadMore(data.next)
+
+    function createPokemonObject (result) {
+      result.forEach( async (pokemon) => {
+        const res = await fetch('https://pokeapi.co/api/v2/pokemon/${pokemon.name}')
+      })
+    }
+    createPokemonObject(data.result)
   }
+
+  useEffect(() => {
+    getAllPokemons()
+  }, [])
+  
+
+
   return (
     <div className="app-container">
       <h1>Poke evolution</h1>
