@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import PokemonThumbnails from './Components/PokemonThumbnails';
 
 function App() {
   
@@ -17,7 +18,7 @@ function App() {
       result.forEach( async (pokemon) => {
         const res = await fetch('https://pokeapi.co/api/v2/pokemon/${pokemon.name}')
         const data = await res.json()
-
+      
         setAllPokemons(currentList => [...currentList, data])
         
         // allPokemons.push(data) to add new pokemons to the array
@@ -38,8 +39,19 @@ function App() {
     <div className="app-container">
       <h1>Poke evolution</h1>
       <div className ='pokemon-container'>
-        <div className='all-container'>
-
+        <div className='all-containers'>
+          
+          {/* Return all pokemon names */}
+          
+          {allPokemons.map(pokemon =>
+            <PokemonThumbnails
+            id={}
+            name={}
+            image={}
+            type={}
+            />
+            )}
+        
         </div>
         <button className='load-more'>Load More</button>
       </div>
