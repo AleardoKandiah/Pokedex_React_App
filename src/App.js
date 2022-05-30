@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 
 function App() {
   
+  // PokedexAPI
   const [allPokemons, setAllPokemons] = useState([])
   const [LoadMore, setLoadMore] = useState('https://pokeapi.co/api/v2/pokemon?limit=20')
   
@@ -10,13 +11,21 @@ function App() {
     const data = await res.json()
 
     setLoadMore(data.next)
-
+  
+    // Creates an array with stored pokemons data
     function createPokemonObject (result) {
       result.forEach( async (pokemon) => {
         const res = await fetch('https://pokeapi.co/api/v2/pokemon/${pokemon.name}')
+        const data = await res.json()
+
+        setAllPokemons(currentList => [...currentList, data])
+        
+        // allPokemons.push(data) to add new pokemons to the array
       })
-    }
+    } 
     createPokemonObject(data.result)
+    await console.log(allPokemons)
+
   }
 
   useEffect(() => {
