@@ -1,9 +1,18 @@
 import React from 'react'
-
-// We need ID, image and Type of pokemon
-function PokemonThumbnails() {
+// React funcitonal component
+// We need ID, name, image and Type of pokemon props
+const PokemonThumbnails = ([id, name, image, type]) => {
   return (
-    <div>PokemonThumbnails</div>
+    <div className= 'thumb-container'>
+        <div className='number'>
+            <small>#0{id}</small>
+        </div>
+        <img src={image} alt={name} />
+        <div className='detail-wrapper'>
+            <h3>{name}</h3>
+            <small> Type: {type}</small>
+        </div>
+    </div>
   )
 }
 
