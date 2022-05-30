@@ -45,10 +45,11 @@ function App() {
           
           {allPokemons.map(pokemon =>
             <PokemonThumbnails
-            id={}
-            name={}
-            image={}
-            type={}
+            key={index}
+            id={pokemonStats.id}
+            name={pokemonStats.name}
+            image={pokemonStats.sprites.other.dream_world.front_default}
+            type={pokemonStats.types[0].type.name}
             />
             )}
         
