@@ -43,12 +43,15 @@ function App() {
           
           {/* Return all pokemon names */}
           
-          {allPokemons.map(pokemon =>
+          {allPokemons.map((pokemon,index) =>
             <PokemonThumbnails
             key={index}
             id={pokemonStats.id}
             name={pokemonStats.name}
+
+            // SVG with better quality
             image={pokemonStats.sprites.other.dream_world.front_default}
+            // Tke type at position 0 and name
             type={pokemonStats.types[0].type.name}
             />
             )}
