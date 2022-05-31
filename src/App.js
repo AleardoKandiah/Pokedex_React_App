@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import PokemonThumbnails from './Components/PokemonThumbnails';
 
-function App() {
+const App = () => {
   
   // PokedexAPI
   const [allPokemons, setAllPokemons] = useState([])
@@ -20,12 +20,12 @@ function App() {
         const data = await res.json()
       
         setAllPokemons(currentList => [...currentList, data])
-        
+        await allPokemons.sort((a, b) => a.id - b.id)
         // allPokemons.push(data) to add new pokemons to the array
       })
     } 
     createPokemonObject(data.result)
-    await console.log(allPokemons)
+
 
   }
 
@@ -43,7 +43,7 @@ function App() {
           
           {/* Return all pokemon names */}
           
-          {allPokemons.map((pokemon,index) =>
+          {allPokemons.map((pokemonStats,index) =>
             <PokemonThumbnails
             key={index}
             id={pokemonStats.id}
@@ -57,7 +57,7 @@ function App() {
             )}
         
         </div>
-        <button className='load-more'>Load More</button>
+        <button className='load-more' onClick={()=> getAllPokemons}>Load More</button>
       </div>
     </div>
   );
