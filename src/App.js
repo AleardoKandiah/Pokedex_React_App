@@ -53,11 +53,11 @@ const App = () => {
             image={pokemonStats.sprites.other.dream_world.front_default}
             // Tke type at position 0 and name
             type={pokemonStats.types[0].type.name}
-            />
-            )}
+            />)}
         
         </div>
-        <button className='load-more' onClick={()=> getAllPokemons}>Load More</button>
+        {/* Add onclick event to load more pokemons */}
+        <button className='load-more' onClick={() => getAllPokemons ()}>Load More</button>
       </div>
     </div>
   );
