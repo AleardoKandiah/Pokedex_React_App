@@ -3,7 +3,7 @@ import React from 'react'
 // We need ID, name, image and Type of pokemon props
 const PokemonThumbnails = ([id, name, image, type]) => {
   // create a new variable to retreive type of pokemon (using a variable instead of a string)
-  const style  = 'thumb-container'
+  const style  = type + 'thumb-container';
 
   return (
     // later use this to style pokemon background
