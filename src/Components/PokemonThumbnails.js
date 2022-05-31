@@ -6,6 +6,7 @@ const PokemonThumbnails = ([id, name, image, type]) => {
   const style  = 'thumb-container'
 
   return (
+    // later use this to style pokemon background
     <div className= {style}>
         <div className='number'>
             <small>#0{id}</small>
